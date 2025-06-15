@@ -1,0 +1,55 @@
+class NotaAluno:
+    def __init__(self, matricula, materia, nota):
+        self.matricula = matricula
+        self.materia = materia
+        self.nota = nota
+        self.situacao = self.calcular_situacao()
+
+    def calcular_situacao(self):
+        if self.nota >= 6:
+            return "Aprovado"
+        elif 4 <= self.nota < 6:
+            return "Prova Final"
+        else:
+            return "Reprovado"
+
+def cadastrar_notas(alunos):
+    notas = []
+    for aluno in alunos:
+        print(f"\nAluno: {aluno.nome} - Matrícula: {aluno.matricula}")
+        materia = input("Matéria: ")
+        nota = float(input("Nota (0-10): "))
+        while nota < 0 or nota > 10:
+            print("Nota inválida! Digite um valor entre 0 e 10.")
+            nota = float(input("Nota (0-10): "))
+        
+        nota_aluno = NotaAluno(aluno.matricula, materia, nota)
+        notas.append(nota_aluno)
+    
+    return notas
+
+def exibir_resultados(alunos, notas):
+    print("\n--- Resultados Finais ---")
+    for aluno in alunos:
+        print(f"\nAluno: {aluno.nome}")
+        print(f"Curso: {aluno.curso} - Campus: {aluno.campus}")
+        for nota in notas:
+            if nota.matricula == aluno.matricula:
+                print(f"Matéria: {nota.materia} - Nota: {nota.nota} - Situação: {nota.situacao}")
+        print("-" * 50)
+
+
+if __name__ == "__main__":
+
+
+
+
+    alunos = [
+        Aluno("João Silva", "2023001", "Ciência da Computação", "Campus Central"),
+        Aluno("Maria Souza", "2023002", "Engenharia", "Campus Norte"),
+        Aluno("Carlos Oliveira", "2023003", "Administração", "Campus Sul")
+    ]
+    
+    
+    notas = cadastrar_notas(alunos)
+    exibir_resultados(alunos, notas)
