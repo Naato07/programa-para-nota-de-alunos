@@ -1,0 +1,36 @@
+class Aluno:
+    def __init__(self, nome, matricula, curso, campus):
+        self.nome = nome
+        self.matricula = matricula
+        self.curso = curso
+        self.campus = campus
+
+def cadastrar_aluno():
+    alunos = []
+    while True:
+        print("\n--- Cadastro de Aluno ---")
+        nome = input("Nome do aluno (ou 'sair' para encerrar): ")
+        if nome.lower() == 'sair':
+            break
+        matricula = input("Matrícula: ")
+        curso = input("Curso: ")
+        campus = input("Campus: ")
+        
+        aluno = Aluno(nome, matricula, curso, campus)
+        alunos.append(aluno)
+        print("Aluno cadastrado com sucesso!")
+    
+    return alunos
+
+def exibir_alunos(alunos):
+    print("\n--- Lista de Alunos ---")
+    for aluno in alunos:
+        print(f"Nome: {aluno.nome}")
+        print(f"Matrícula: {aluno.matricula}")
+        print(f"Curso: {aluno.curso}")
+        print(f"Campus: {aluno.campus}")
+        print("-" * 30)
+
+if __name__ == "__main__":
+    lista_alunos = cadastrar_aluno()
+    exibir_alunos(lista_alunos)
